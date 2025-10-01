@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact Me — Portfolio</title>
+  <meta name="description" content="Get in touch with me via email, phone, or WhatsApp.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .contact-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .info-box {
+      background: rgba(0,0,0,0.6);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 15px rgba(0,245,255,0.2);
+    }
+    .info-box h3 {
+      margin-bottom: 0.5rem;
+      color: #00f5ff;
+    }
+    .info-box p {
+      color: #ccc;
+      margin: 0;
+    }
+    .contact-form {
+      background: rgba(0,0,0,0.6);
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0,245,255,0.2);
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      background: #111;
+      color: #fff;
+    }
+    .contact-form button {
+      width: 100%;
+      padding: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      background: linear-gradient(45deg,#00f5ff,#0077ff);
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .contact-form button:hover {
+      opacity: 0.9;
+    }
+
+    /* Floating LinkedIn Button */
+    .floating-linkedin {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #0077b5;
+      color: #fff;
+      padding: 0.8rem 1rem;
+      border-radius: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      font-weight: 600;
+      animation: pulse 2s infinite;
+      text-decoration: none;
+      z-index: 1000;
+    }
+    .floating-linkedin:hover {
+      transform: scale(1.05);
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 15px rgba(0, 119, 181, 0.8); }
+      50% { box-shadow: 0 0 30px rgba(0, 119, 181, 1); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .contact-section {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="dir-ltr">
+  <div id="bg-canvas" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index-en.html">Portfolio</a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index-en.html">Home</a></li>
+          <li><a href="about-en.html">About</a></li>
+          <li><a href="projects-en.html">Projects</a></li>
+          <li><a href="contact-en.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="lang-switch">
+      <a href="contact.html">AR</a> | 
+      <a href="contact-en.html" class="active">EN</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" style="min-height:40vh;display:flex;align-items:center;">
+      <div class="container">
+        <h1 class="headline">Contact Me</h1>
+        <p class="subhead">Feel free to reach out via email, phone, or directly through WhatsApp.</p>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="container contact-section">
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <div class="info-box">
+            <h3>📞 Phone</h3>
+            <p>+971 58 188 2135</p>
+          </div>
+          <div class="info-box">
+            <h3>✉️ Email</h3>
+            <p>mohamed.m.shahat@gmail.com</p>
+          </div>
+        </div>
+
+        <!-- WhatsApp Form -->
+        <form class="contact-form" id="whatsappForm">
+          <input type="text" id="name" placeholder="Your Name" required>
+          <input type="email" id="email" placeholder="Your Email" required>
+          <textarea id="message" rows="5" placeholder="Write your message..." required></textarea>
+          <button type="submit">Send via WhatsApp</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> All Rights Reserved</p>
+      <div class="footer-nav">
+        <a href="privacy-en.html" target="_blank">Privacy Policy</a>
+        <a href="terms-en.html" target="_blank">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating LinkedIn Button -->
+  <a href="https://www.linkedin.com/in/mohamed-mahmoud-elshahat-748429387" target="_blank" class="floating-linkedin">
+    🚀 Follow me on LinkedIn
+  </a>
+
+  <script src="scripts.js" defer></script>
+  <script>
+    document.getElementById("whatsappForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+      const phoneNumber = "971581882135"; // WhatsApp number without +
+      const url = `https://wa.me/${phoneNumber}?text=Hello, my name is ${name}%0AMy email: ${email}%0AMessage:%0A${message}`;
+      window.open(url, "_blank");
+    });
+  </script>
+</body>
+</html>
